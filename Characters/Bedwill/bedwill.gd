@@ -36,4 +36,5 @@ func _physics_process(delta):
 	if can_move:
 		move_and_slide()
 	
+	animation_matcher.can_move = can_move
 	animation_matcher.update_animation(last_direction, move_direction)

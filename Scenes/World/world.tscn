@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj306s26c8ang"]
+[gd_scene load_steps=7 format=3 uid="uid://bj306s26c8ang"]
 
 [ext_resource type="PackedScene" uid="uid://dqdm0t81jscmy" path="res://Characters/Bedwill/bedwill.tscn" id="1_ix36w"]
 [ext_resource type="Texture2D" uid="uid://c8g1wgv1ijilp" path="res://Scenes/World/forest sheet.png" id="2_egl4a"]
 [ext_resource type="PackedScene" uid="uid://xxc8rrvqnixa" path="res://Scenes/room_camera.tscn" id="3_kc3rw"]
+[ext_resource type="PackedScene" uid="uid://xw8ovdne6a88" path="res://Characters/Monsters/Spoink/spoink.tscn" id="4_xvewt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rjo7"]
 texture = ExtResource("2_egl4a")
@@ -181,3 +182,6 @@ position = Vector2(120, 64)
 
 [node name="RoomCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_kc3rw")]
 player = NodePath("../Bedwill")
+
+[node name="Spoink" parent="." instance=ExtResource("4_xvewt")]
+position = Vector2(173, 88)
