@@ -1,8 +1,17 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed := 35
 
 @onready var animations := $AnimationPlayer
+@onready var sprite := $Sprite2D
+
+func get_global_center_position() -> Vector2:
+	return global_position + sprite.position
+
+func clamp_to_limits(limit_position: Vector2, limit_size: Vector2):
+	global_position.x = clamp(global_position.x, limit_position.x + 8, limit_position.x + limit_size.x - 8)
+	global_position.y = clamp(global_position.y, limit_position.y + 16, limit_position.y + limit_size.y)
 
 func get_movement_direction() -> Vector2:
 	var move_direction = Vector2.ZERO

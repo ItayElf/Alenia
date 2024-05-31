@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://xxc8rrvqnixa"]
+
+[ext_resource type="Script" path="res://Scenes/room_camera.gd" id="1_242cb"]
+
+[node name="RoomCamera" type="Camera2D"]
+anchor_mode = 0
+script = ExtResource("1_242cb")
