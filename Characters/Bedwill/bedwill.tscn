@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqdm0t81jscmy"]
+
+[ext_resource type="Script" path="res://Characters/Bedwill/bedwill.gd" id="1_aril6"]
+[ext_resource type="Texture2D" uid="uid://dhtbdb50veyuy" path="res://Characters/Bedwill/bedwill-Sheet.png" id="1_p330n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbfki"]
+atlas = ExtResource("1_p330n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gi3si"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbfki")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Bedwill" type="CharacterBody2D"]
+script = ExtResource("1_aril6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_gi3si")
+animation = &"Idle"
+frame_progress = 0.115883
