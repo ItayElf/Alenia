@@ -28,6 +28,9 @@ func update_animation(last_direction: Vector2, current_direction: Vector2):
 	
 	animations.play(state + direction)
 
+func _ready():
+	animations.play("idle_front")
+
 func _physics_process(delta):
 	var last_direction := Vector2i(velocity / speed)
 	var move_direction := get_movement_direction()
