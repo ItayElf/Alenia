@@ -5,6 +5,7 @@ class_name Player
 
 @onready var animations := $AnimationPlayer
 @onready var sprite := $Sprite2D
+@onready var animation_matcher := AnimationMatcher.new()
 
 var can_move := true
 
@@ -23,23 +24,8 @@ func get_movement_direction() -> Vector2:
 		move_direction.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	return move_direction.normalized()
 
-func update_animation(last_direction: Vector2, current_direction: Vector2):
-	if last_direction == Vector2.ZERO and current_direction == last_direction:
-		return
-		
-	var direction := "front"
-	var state = "move_"
-	if current_direction == Vector2.ZERO or not can_move:
-		state = "idle_"
-		current_direction = last_direction
-	
-	if current_direction.x < 0: direction = "left"
-	elif current_direction.x > 0: direction = "right"
-	elif current_direction.y < 0: direction = "back"
-	
-	animations.play(state + direction)
-
 func _ready():
+	animation_matcher.animations = animations
 	animations.play("idle_front")
 
 func _physics_process(delta):
@@ -50,4 +36,4 @@ func _physics_process(delta):
 	if can_move:
 		move_and_slide()
 	
-	update_animation(last_direction, move_direction)
+	animation_matcher.update_animation(last_direction, move_direction)
