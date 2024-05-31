@@ -6,6 +6,8 @@ class_name Player
 @onready var animations := $AnimationPlayer
 @onready var sprite := $Sprite2D
 
+var can_move := true
+
 func get_global_center_position() -> Vector2:
 	return global_position + sprite.position
 
@@ -27,7 +29,7 @@ func update_animation(last_direction: Vector2, current_direction: Vector2):
 		
 	var direction := "front"
 	var state = "move_"
-	if current_direction == Vector2.ZERO:
+	if current_direction == Vector2.ZERO or not can_move:
 		state = "idle_"
 		current_direction = last_direction
 	
@@ -44,5 +46,8 @@ func _physics_process(delta):
 	var last_direction := Vector2i(velocity / speed)
 	var move_direction := get_movement_direction()
 	velocity = move_direction * speed
-	move_and_slide()
+	
+	if can_move:
+		move_and_slide()
+	
 	update_animation(last_direction, move_direction)

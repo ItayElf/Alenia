@@ -1,11 +1,14 @@
 extends Camera2D
 
 @export var player: Player
-@export var transition_offset: Vector4i = Vector4i(4,6,4,4)
+@export var speed := 3
+@export var transition_offset: Vector4i = Vector4i(0,0,0,0)
 
 @onready var camera_size: Vector2i = get_viewport_rect().size
 
 var current_cell: Vector2i
+var target_position: Vector2i
+var should_move = false
 
 func update_cell():
 	var player_center = player.get_global_center_position()
@@ -23,7 +26,15 @@ func update_cell():
 	current_cell += cell_direction
 
 func update_position():
-	global_position = current_cell * camera_size
+	#global_position = current_cell * camera_size
+	target_position = current_cell * camera_size
+	should_move = true
+
+func is_slide_over():
+	if not should_move: return false
+	#global_position.is_equal_approx(Vector2(target_position))
+	var diff := (Vector2(target_position) - global_position).abs()
+	return diff.x < speed and diff.y < speed
 
 func _ready():
 	current_cell = Vector2i(player.get_global_center_position()) / camera_size
@@ -35,4 +46,13 @@ func _physics_process(delta):
 	
 	if old_cell != current_cell:
 		update_position()
+		player.can_move = false
+	
+	var slide_direction = global_position.direction_to(target_position).normalized()
+	global_position += slide_direction * speed
+	
+	if is_slide_over():
+		global_position = target_position
+		should_move = false
+		player.can_move = true
 		player.clamp_to_limits(global_position, camera_size)
