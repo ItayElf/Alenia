@@ -8,13 +8,11 @@ class_name Player
 @onready var animation_matcher := AnimationMatcher.new()
 @onready var knockbacker := Knockbacker.new()
 
-signal health_changed
+signal health_changed(current_health: float)
 
 var can_move := true
 var max_health := 3.0
 var current_health := max_health
-var knockback_velocity := Vector2.ZERO
-var knockback_tween: Tween
 
 func get_global_center_position() -> Vector2:
 	return global_position + sprite.position
@@ -48,6 +46,9 @@ func _physics_process(_delta):
 	animation_matcher.update_animation(move_direction)
 
 func _on_hurtbox_area_entered(area):
-	current_health = max(0, current_health - 0.5)
+	if not (area is Weapon):
+		return
+	var weapon: Weapon = area
+	current_health = max(0, current_health - weapon.damage)
 	health_changed.emit(current_health)
-	knockbacker.knockback(area.get_parent().velocity, 150)
+	knockbacker.knockback(area.get_parent().velocity, weapon.knockback_power)
