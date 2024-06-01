@@ -42,7 +42,12 @@ func _physics_process(_delta):
 	animation_matcher.can_move = can_move
 	animation_matcher.update_animation(move_direction)
 
+func knockback(enemy_velocity: Vector2, power: int):
+	var knock_direction = (enemy_velocity - velocity).normalized() * power
+	velocity = knock_direction
+	move_and_slide()
 
 func _on_hurtbox_area_entered(area):
-	current_health -= 0.5
+	current_health = max(0, current_health - 0.5)
 	health_changed.emit(current_health)
+	knockback(area.get_parent().velocity, 500)
