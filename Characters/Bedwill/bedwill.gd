@@ -6,10 +6,9 @@ class_name Player
 @onready var animations := $AnimationPlayer
 @onready var sprite := $Sprite2D
 @onready var animation_matcher := AnimationMatcher.new()
+@onready var knockbacker := Knockbacker.new()
 
 signal health_changed
-
-const KNOCKBACK_DURATION = 0.25
 
 var can_move := true
 var max_health := 3.0
@@ -33,12 +32,14 @@ func get_movement_direction() -> Vector2:
 	return move_direction.normalized()
 
 func _ready():
+	knockbacker.object = self
+	knockbacker.sprite = sprite
 	animation_matcher.animations = animations
 	animations.play("idle_front")
 
 func _physics_process(_delta):
 	var move_direction := get_movement_direction()
-	velocity = move_direction * speed + knockback_velocity
+	velocity = move_direction * speed + knockbacker.knockback_velocity
 	
 	if can_move:
 		move_and_slide()
@@ -46,19 +47,7 @@ func _physics_process(_delta):
 	animation_matcher.can_move = can_move
 	animation_matcher.update_animation(move_direction)
 
-func damage_modulate():
-	sprite.modulate = Color(1, 0, 0, 1)
-	knockback_tween.parallel().tween_property(sprite, "modulate", Color(1,1,1,1), KNOCKBACK_DURATION)
-
-func knockback(enemy_velocity: Vector2, power: int):
-	var knock_direction = (enemy_velocity - velocity).normalized() * power
-	knockback_velocity = knock_direction
-
-	knockback_tween = get_tree().create_tween()
-	knockback_tween.parallel().tween_property(self, "knockback_velocity", Vector2.ZERO, KNOCKBACK_DURATION)
-
 func _on_hurtbox_area_entered(area):
 	current_health = max(0, current_health - 0.5)
 	health_changed.emit(current_health)
-	knockback(area.get_parent().velocity, 150)
-	damage_modulate()
+	knockbacker.knockback(area.get_parent().velocity, 150)
