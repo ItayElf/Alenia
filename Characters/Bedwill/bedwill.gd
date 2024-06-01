@@ -28,7 +28,7 @@ func _ready():
 	animation_matcher.animations = animations
 	animations.play("idle_front")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var last_direction := Vector2i(velocity / speed)
 	var move_direction := get_movement_direction()
 	velocity = move_direction * speed

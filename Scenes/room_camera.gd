@@ -40,7 +40,7 @@ func _ready():
 	current_cell = Vector2i(player.get_global_center_position()) / camera_size
 	update_position()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var old_cell = current_cell
 	update_cell()
 	
