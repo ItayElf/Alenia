@@ -18,10 +18,9 @@ func _ready():
 
 
 func _physics_process(_delta):
-	var last_direction := Vector2i(velocity / speed)
 	var move_direction := wanderer.current_direction
 	velocity = move_direction * speed
 	
 	move_and_slide()
 	
-	animation_matcher.update_animation(last_direction, move_direction)
+	animation_matcher.update_animation(move_direction)

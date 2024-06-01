@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj306s26c8ang"]
+[gd_scene load_steps=8 format=3 uid="uid://bj306s26c8ang"]
 
 [ext_resource type="PackedScene" uid="uid://dqdm0t81jscmy" path="res://Characters/Bedwill/bedwill.tscn" id="1_ix36w"]
 [ext_resource type="Texture2D" uid="uid://c8g1wgv1ijilp" path="res://Scenes/World/forest sheet.png" id="2_egl4a"]
 [ext_resource type="PackedScene" uid="uid://xxc8rrvqnixa" path="res://Scenes/room_camera.tscn" id="3_kc3rw"]
 [ext_resource type="PackedScene" uid="uid://xw8ovdne6a88" path="res://Characters/Monsters/Spoink/spoink.tscn" id="4_xvewt"]
+[ext_resource type="PackedScene" uid="uid://wk8ju0otqvwq" path="res://UI/hearts_container.tscn" id="5_nrgnb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rjo7"]
 texture = ExtResource("2_egl4a")
@@ -164,7 +165,8 @@ texture = ExtResource("2_egl4a")
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.125, 6, -6.875, 4.125, -7, -1.75, -4.375, -5.25, 4.5, -5, 6.875, -2.5, 7, 3.75, 5.5, 5.625)
 
 [sub_resource type="TileSet" id="TileSet_taodl"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "grasspath"
 terrain_set_0/terrain_0/color = Color(0.639216, 0.0666667, 0.572549, 1)
@@ -185,3 +187,16 @@ player = NodePath("../Bedwill")
 
 [node name="Spoink" parent="." instance=ExtResource("4_xvewt")]
 position = Vector2(173, 88)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("5_nrgnb")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -30.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 1

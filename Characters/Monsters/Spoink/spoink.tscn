@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xw8ovdne6a88"]
+[gd_scene load_steps=15 format=3 uid="uid://xw8ovdne6a88"]
 
 [ext_resource type="Script" path="res://Characters/Monsters/Spoink/spoink.gd" id="1_n0wpj"]
 [ext_resource type="Texture2D" uid="uid://b84y5l7q57um4" path="res://Characters/Monsters/Spoink/spoink-Sheet.png" id="2_1febr"]
@@ -27,6 +27,18 @@ tracks/1/path = NodePath("CollisionShape2D:shape:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -62,6 +74,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(10, 10)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
 
 [sub_resource type="Animation" id="Animation_iken2"]
 resource_name = "idle_front"
@@ -87,6 +111,18 @@ tracks/1/path = NodePath("CollisionShape2D:shape:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -122,6 +158,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(14, 10)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 10)]
+}
 
 [sub_resource type="Animation" id="Animation_s6hkr"]
 resource_name = "idle_right"
@@ -147,6 +195,18 @@ tracks/1/path = NodePath("CollisionShape2D:shape:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -182,6 +242,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(10, 10)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
 
 [sub_resource type="Animation" id="Animation_ydtfq"]
 resource_name = "move_front"
@@ -207,6 +279,18 @@ tracks/1/path = NodePath("CollisionShape2D:shape:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -242,6 +326,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(14, 10)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 10)]
+}
 
 [sub_resource type="Animation" id="Animation_88kuj"]
 resource_name = "move_right"
@@ -272,6 +368,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(14, 10)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 10)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_csm2e"]
 _data = {
@@ -286,8 +394,13 @@ _data = {
 "move_right": SubResource("Animation_88kuj")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65yea"]
+size = Vector2(14, 10)
+
 [node name="Spoink" type="CharacterBody2D"]
 scale = Vector2(0.75, 0.75)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_n0wpj")
 speed = 5
 
@@ -304,3 +417,9 @@ shape = SubResource("RectangleShape2D_oim6k")
 libraries = {
 "": SubResource("AnimationLibrary_csm2e")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.38419e-07, -5)
+shape = SubResource("RectangleShape2D_65yea")

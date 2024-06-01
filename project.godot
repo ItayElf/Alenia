@@ -26,8 +26,14 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Characters/": "orange",
-"res://Scenes/": "yellow"
+"res://Scenes/": "yellow",
+"res://UI/": "green"
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
 
 [rendering]
 

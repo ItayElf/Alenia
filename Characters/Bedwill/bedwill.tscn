@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqdm0t81jscmy"]
+[gd_scene load_steps=15 format=3 uid="uid://dqdm0t81jscmy"]
 
 [ext_resource type="Script" path="res://Characters/Bedwill/bedwill.gd" id="1_aril6"]
 [ext_resource type="Texture2D" uid="uid://dhtbdb50veyuy" path="res://Characters/Bedwill/bedwill-Sheet.png" id="1_p330n"]
@@ -174,7 +174,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2m2b"]
-size = Vector2(10, 13)
+size = Vector2(10, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x2c0"]
+size = Vector2(10, 12)
 
 [node name="Bedwill" type="CharacterBody2D"]
 script = ExtResource("1_aril6")
@@ -191,5 +194,14 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6.5)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_i2m2b")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_3x2c0")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

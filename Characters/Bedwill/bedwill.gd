@@ -8,6 +8,8 @@ class_name Player
 @onready var animation_matcher := AnimationMatcher.new()
 
 var can_move := true
+var max_health := 3.0
+var current_health := max_health
 
 func get_global_center_position() -> Vector2:
 	return global_position + sprite.position
@@ -29,7 +31,6 @@ func _ready():
 	animations.play("idle_front")
 
 func _physics_process(_delta):
-	var last_direction := Vector2i(velocity / speed)
 	var move_direction := get_movement_direction()
 	velocity = move_direction * speed
 	
@@ -37,4 +38,9 @@ func _physics_process(_delta):
 		move_and_slide()
 	
 	animation_matcher.can_move = can_move
-	animation_matcher.update_animation(last_direction, move_direction)
+	animation_matcher.update_animation(move_direction)
+
+
+func _on_hurtbox_area_entered(area):
+	current_health -= 0.5
+	print_debug(current_health)
