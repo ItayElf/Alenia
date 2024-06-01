@@ -7,6 +7,8 @@ class_name Player
 @onready var sprite := $Sprite2D
 @onready var animation_matcher := AnimationMatcher.new()
 
+signal health_changed
+
 var can_move := true
 var max_health := 3.0
 var current_health := max_health
@@ -43,4 +45,4 @@ func _physics_process(_delta):
 
 func _on_hurtbox_area_entered(area):
 	current_health -= 0.5
-	print_debug(current_health)
+	health_changed.emit(current_health)
