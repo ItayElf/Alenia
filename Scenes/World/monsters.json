@@ -1,0 +1,12 @@
+[
+  {
+    "x": 0,
+    "y": 0,
+    "monsters": [
+      {
+        "name": "spoink",
+        "position": [173, 88]
+      }
+    ]
+  }
+]
