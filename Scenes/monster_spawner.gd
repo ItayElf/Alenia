@@ -3,6 +3,10 @@ class_name MonsterSpwaner
 
 @export var json_file: String
 
+const SPAWNER = preload("res://Effects/SpwanEffect.tscn")
+
+var export_table: Dictionary
+
 var _data: Dictionary = {}
 
 func _parse_json() -> Array:
@@ -25,4 +29,12 @@ func _parse_data(data: Array):
 func load_data():
 	var json = _parse_json()
 	_parse_data(json)
-	print_debug(_data)
+
+func spawn_at_room(room: Vector2i, parent: Node2D):
+	var monsters = _data[room]
+	for monster in monsters:
+		var monster_scene = export_table[monster["name"]]
+		var spawner = SPAWNER.instantiate()
+		spawner.spawned = monster_scene
+		spawner.global_position = monster["position"]
+		parent.add_child(spawner)
