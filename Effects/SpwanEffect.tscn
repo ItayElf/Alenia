@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgvvspasd0srd"]
+
+[ext_resource type="Script" path="res://Effects/SpwanEffect.gd" id="1_a8h7q"]
+[ext_resource type="Texture2D" uid="uid://d1w2nvqqxmixp" path="res://Effects/spawn-Sheet.png" id="1_u30uf"]
+
+[sub_resource type="Animation" id="Animation_5jnrp"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_g70qs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6b6yq"]
+_data = {
+"RESET": SubResource("Animation_g70qs"),
+"spawn": SubResource("Animation_5jnrp")
+}
+
+[node name="SpwanEffect" type="Node2D"]
+script = ExtResource("1_a8h7q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u30uf")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6b6yq")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

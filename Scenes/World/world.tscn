@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bj306s26c8ang"]
+[gd_scene load_steps=10 format=3 uid="uid://bj306s26c8ang"]
 
 [ext_resource type="Script" path="res://Scenes/World/world.gd" id="1_fwlqg"]
 [ext_resource type="PackedScene" uid="uid://dqdm0t81jscmy" path="res://Characters/Bedwill/bedwill.tscn" id="1_ix36w"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xxc8rrvqnixa" path="res://Scenes/room_camera.tscn" id="3_kc3rw"]
 [ext_resource type="PackedScene" uid="uid://xw8ovdne6a88" path="res://Characters/Monsters/Spoink/spoink.tscn" id="4_xvewt"]
 [ext_resource type="PackedScene" uid="uid://wk8ju0otqvwq" path="res://UI/hearts_container.tscn" id="5_nrgnb"]
+[ext_resource type="PackedScene" uid="uid://bgvvspasd0srd" path="res://Effects/SpwanEffect.tscn" id="6_51nos"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rjo7"]
 texture = ExtResource("2_egl4a")
@@ -202,8 +203,11 @@ position = Vector2(120, 64)
 [node name="RoomCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_kc3rw")]
 player = NodePath("../Bedwill")
 
-[node name="Spoink" parent="." instance=ExtResource("4_xvewt")]
+[node name="Monsters" type="Node2D" parent="."]
+
+[node name="SpwanEffect" parent="Monsters" instance=ExtResource("6_51nos")]
 position = Vector2(173, 88)
+spawned = ExtResource("4_xvewt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
