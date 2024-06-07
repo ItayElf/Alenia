@@ -48,7 +48,6 @@ func _physics_process(_delta):
 	if old_cell != current_cell:
 		update_position()
 		player.can_move = false
-		entered_new_room.emit(current_cell)
 	
 	var slide_direction = global_position.direction_to(target_position).normalized()
 	global_position += slide_direction * speed
@@ -58,3 +57,4 @@ func _physics_process(_delta):
 		should_move = false
 		player.can_move = true
 		player.clamp_to_limits(global_position, camera_size)
+		entered_new_room.emit(current_cell)
