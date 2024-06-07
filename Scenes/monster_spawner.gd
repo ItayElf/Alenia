@@ -31,6 +31,9 @@ func load_data():
 	_parse_data(json)
 
 func spawn_at_room(room: Vector2i, parent: Node2D):
+	if room not in _data:
+		return
+	
 	var monsters = _data[room]
 	for monster in monsters:
 		var monster_scene = export_table[monster["name"]]

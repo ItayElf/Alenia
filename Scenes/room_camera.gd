@@ -6,6 +6,8 @@ extends Camera2D
 
 @onready var camera_size: Vector2i = get_viewport_rect().size
 
+signal entered_new_room(new_room: Vector2i)
+
 var current_cell: Vector2i
 var target_position: Vector2i
 var should_move = false
@@ -26,7 +28,6 @@ func update_cell():
 	current_cell += cell_direction
 
 func update_position():
-	#global_position = current_cell * camera_size
 	target_position = current_cell * camera_size
 	should_move = true
 
@@ -47,6 +48,7 @@ func _physics_process(_delta):
 	if old_cell != current_cell:
 		update_position()
 		player.can_move = false
+		entered_new_room.emit(current_cell)
 	
 	var slide_direction = global_position.direction_to(target_position).normalized()
 	global_position += slide_direction * speed
