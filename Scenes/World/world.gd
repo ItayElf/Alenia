@@ -16,14 +16,17 @@ func _ready():
 	heart_container.set_max_hearts(player.max_health)
 	player.health_changed.connect(heart_container.update_hearts)
 	
-	camera.connect("entered_new_room", _on_new_room)
+	camera.connect("start_camera_transition", _on_room_cleanup)
+	camera.connect("end_camera_transition", _on_new_room)
 	
 	monster_spawner.json_file = MONSTER_DATA
 	monster_spawner.export_table = EXPORT_TABLE
 	monster_spawner.load_data()
 	monster_spawner.spawn_at_room(Vector2.ZERO, monsters)
 	
-func _on_new_room(room: Vector2i):
+func _on_room_cleanup():
 	for child in monsters.get_children():
 		child.queue_free()
+
+func _on_new_room(room: Vector2i):
 	monster_spawner.spawn_at_room(room, monsters)

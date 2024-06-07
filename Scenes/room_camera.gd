@@ -1,12 +1,13 @@
 extends Camera2D
 
 @export var player: Player
-@export var speed := 3
+@export var speed := 3.2
 @export var transition_offset: Vector4i = Vector4i(0,0,0,0)
 
 @onready var camera_size: Vector2i = get_viewport_rect().size
 
-signal entered_new_room(new_room: Vector2i)
+signal start_camera_transition()
+signal end_camera_transition(new_room: Vector2i)
 
 var current_cell: Vector2i
 var target_position: Vector2i
@@ -48,6 +49,7 @@ func _physics_process(_delta):
 	if old_cell != current_cell:
 		update_position()
 		player.can_move = false
+		start_camera_transition.emit()
 	
 	var slide_direction = global_position.direction_to(target_position).normalized()
 	global_position += slide_direction * speed
@@ -57,4 +59,4 @@ func _physics_process(_delta):
 		should_move = false
 		player.can_move = true
 		player.clamp_to_limits(global_position, camera_size)
-		entered_new_room.emit(current_cell)
+		end_camera_transition.emit(current_cell)
