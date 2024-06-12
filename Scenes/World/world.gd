@@ -8,6 +8,7 @@ extends Node2D
 
 const MONSTER_DATA = "res://Scenes/World/monsters.json"
 const FOREST_THEME = preload("res://Sounds/Music/Forest (main) theme.ogg")
+const LEVEL_RESET = preload("res://Sounds/Sound Effects/level reset.wav")
 
 const EXPORT_TABLE = {
 	"spoink": preload("res://Characters/Monsters/Spoink/spoink.tscn")
@@ -17,9 +18,10 @@ func _ready():
 	MusicController.play_music(FOREST_THEME)
 	heart_container.set_max_hearts(player.max_health)
 	player.health_changed.connect(heart_container.update_hearts)
+	player.player_died.connect(_reload)
 	
-	camera.connect("start_camera_transition", _on_room_cleanup)
-	camera.connect("end_camera_transition", _on_new_room)
+	camera.start_camera_transition.connect(_on_room_cleanup)
+	camera.end_camera_transition.connect(_on_new_room)
 	
 	monster_spawner.json_file = MONSTER_DATA
 	monster_spawner.export_table = EXPORT_TABLE
@@ -32,3 +34,7 @@ func _on_room_cleanup():
 
 func _on_new_room(room: Vector2i):
 	monster_spawner.spawn_at_room(room, monsters)
+
+func _reload():
+	MusicController.play_effect(LEVEL_RESET)
+	get_tree().call_deferred("reload_current_scene")

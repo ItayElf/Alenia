@@ -10,7 +10,7 @@ var _last_played: AudioStream = null
 func play_music(stream: AudioStream):
 	if stream == _last_played:
 		return
-	
+	_last_played = stream
 	background_player.stream = stream
 	background_player.play()
 

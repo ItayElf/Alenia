@@ -181,7 +181,6 @@ size = Vector2(10, 12)
 
 [node name="Bedwill" type="CharacterBody2D"]
 script = ExtResource("1_aril6")
-speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)

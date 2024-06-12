@@ -9,12 +9,23 @@ class_name Player
 @onready var knockbacker := Knockbacker.new()
 
 signal health_changed(current_health: float)
+signal player_died()
 
 const PLAYER_HIT_EFFECT := preload("res://Sounds/Sound Effects/player hit.wav")
 
 var can_move := true
 var max_health := 3.0
 var current_health := max_health
+
+func _set_health(value: float):
+	current_health = value
+	if current_health == 0:
+		player_died.emit()
+	else:
+		health_changed.emit(current_health)
+
+func _remove_health(value: float):
+	_set_health(max(0, current_health - value))
 
 func get_global_center_position() -> Vector2:
 	return global_position + sprite.position
@@ -52,6 +63,5 @@ func _on_hurtbox_area_entered(area):
 		return
 	var weapon: Weapon = area
 	MusicController.play_effect(PLAYER_HIT_EFFECT)
-	current_health = max(0, current_health - weapon.damage)
-	health_changed.emit(current_health)
 	knockbacker.knockback(area.get_parent().velocity, weapon.knockback_power)
+	_remove_health(weapon.damage)
