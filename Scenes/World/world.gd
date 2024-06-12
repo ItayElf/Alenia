@@ -7,12 +7,14 @@ extends Node2D
 @onready var monster_spawner := MonsterSpwaner.new()
 
 const MONSTER_DATA = "res://Scenes/World/monsters.json"
+const FOREST_THEME = preload("res://Sounds/Music/Forest (main) theme.ogg")
 
 const EXPORT_TABLE = {
 	"spoink": preload("res://Characters/Monsters/Spoink/spoink.tscn")
 }
 
 func _ready():
+	MusicController.play_music(FOREST_THEME)
 	heart_container.set_max_hearts(player.max_health)
 	player.health_changed.connect(heart_container.update_hearts)
 	

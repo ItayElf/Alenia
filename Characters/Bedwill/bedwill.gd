@@ -10,6 +10,8 @@ class_name Player
 
 signal health_changed(current_health: float)
 
+const PLAYER_HIT_EFFECT := preload("res://Sounds/Sound Effects/player hit.wav")
+
 var can_move := true
 var max_health := 3.0
 var current_health := max_health
@@ -49,6 +51,7 @@ func _on_hurtbox_area_entered(area):
 	if not (area is Weapon):
 		return
 	var weapon: Weapon = area
+	MusicController.play_effect(PLAYER_HIT_EFFECT)
 	current_health = max(0, current_health - weapon.damage)
 	health_changed.emit(current_health)
 	knockbacker.knockback(area.get_parent().velocity, weapon.knockback_power)

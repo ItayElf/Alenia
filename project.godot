@@ -14,6 +14,10 @@ config/name="Alenia"
 run/main_scene="res://Scenes/World/world.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
+[autoload]
+
+MusicController="*res://Sounds/music_controller.tscn"
+
 [display]
 
 window/size/viewport_width=240
@@ -27,6 +31,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://Characters/": "orange",
 "res://Scenes/": "yellow",
+"res://Sounds/": "teal",
 "res://UI/": "green"
 }
 

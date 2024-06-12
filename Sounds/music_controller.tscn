@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://buvsxu3e8836o"]
+
+[ext_resource type="Script" path="res://Sounds/music_controller.gd" id="1_nyodm"]
+
+[node name="MusicController" type="Node"]
+script = ExtResource("1_nyodm")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="EffectsPlayer" type="AudioStreamPlayer" parent="."]

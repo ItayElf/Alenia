@@ -197,6 +197,7 @@ layer_1/tile_data = PackedInt32Array(131072, 327680, 4, 131073, 327680, 4, 13107
 
 [node name="Bedwill" parent="." instance=ExtResource("1_ix36w")]
 position = Vector2(120, 78)
+speed = null
 
 [node name="RoomCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_kc3rw")]
 player = NodePath("../Bedwill")
